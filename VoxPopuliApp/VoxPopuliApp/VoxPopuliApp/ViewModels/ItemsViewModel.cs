@@ -18,7 +18,7 @@ namespace VoxPopuliApp.ViewModels
 
         public ItemsViewModel()
         {            
-            Title = "Campañas Activas";
+            Title = "VoxPopuli";
             Campanias = new ObservableRangeCollection<Rootobject>();
             CargaCampaniasCommand = new Command(async () => await ExecuteLoadCampaniasCommand());
         }
