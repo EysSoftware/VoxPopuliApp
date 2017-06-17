@@ -25,17 +25,28 @@ namespace VoxPopuliApp.ViewModels
 
         public Respuesta respuestaSeleccionada { get; set; }
 
-        public ItemDetailViewModel(Rootobject item = null)
+        public ItemDetailViewModel(Rootobject item)
         {
-            Title = item.CampaniaDetalle.First().Pregunta.Nombre;
-            Item = item;
-            CampaniaID = item.CampaniaId;
-            TextoBoton = "Siguiente";
-            Respuestas = new ObservableRangeCollection<Respuesta>();
-            CargaRespuesta = new Command(async () => await ExecuteLoadRespuestasCommand());
-            CargarSiguiente = new Command(() => ExecuteCargaSiguienteCommand());
-            client = new HttpClient();
-            client.MaxResponseContentBufferSize = 256000;
+            cargarEncuesta(item);
+        }
+        private void cargarEncuesta(Rootobject item = null)
+        {
+            try
+            {
+                Title = item.CampaniaDetalle.First().Pregunta.Nombre;
+                Item = item;
+                CampaniaID = item.CampaniaId;
+                TextoBoton = "Siguiente";
+                Respuestas = new ObservableRangeCollection<Respuesta>();
+                CargaRespuesta = new Command(async () => await ExecuteLoadRespuestasCommand());
+                CargarSiguiente = new Command(() => ExecuteCargaSiguienteCommand());
+                client = new HttpClient();
+                client.MaxResponseContentBufferSize = 256000;
+            }
+            catch (Exception ex)
+            {
+                MessagingCenter.Send<ItemDetailViewModel, string>(this, "ErrLoad", "Error al cargar encuesta." + ex.Message);
+            }
         }
 
         private async void ExecuteCargaSiguienteCommand()

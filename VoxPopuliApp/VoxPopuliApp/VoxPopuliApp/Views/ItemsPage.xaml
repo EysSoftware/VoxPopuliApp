@@ -5,7 +5,7 @@
               Title="VoxPopuli"
              x:Name="BrowseItemsPage">
   <ContentPage.Content>
-        <StackLayout>
+        <StackLayout Padding="0,0,0,10">
             <Grid BackgroundColor="{StaticResource Primary}">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="auto"/>

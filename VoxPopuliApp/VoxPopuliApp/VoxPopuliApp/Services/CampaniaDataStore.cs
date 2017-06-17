@@ -25,7 +25,7 @@ namespace VoxPopuliApp.Services
         public CampaniaDataStore()
         {
             client = new HttpClient();
-            client.MaxResponseContentBufferSize = 256000;
+            client.MaxResponseContentBufferSize = 2560000;
         }
 
         public Task<bool> AddItemAsync(Rootobject item)
@@ -67,12 +67,7 @@ namespace VoxPopuliApp.Services
             catch (Exception ex)
             {
                 Debug.WriteLine("Error = "+ ex);
-                MessagingCenter.Send(new MessagingCenterAlert
-                {
-                    Title = "Error",
-                    Message = "Imposible cargar campañas.",
-                    Cancel = "Aceptar"
-                }, "Aviso");
+                MessagingCenter.Send<CampaniaDataStore, string>(this, "ErrInsert", "Error al insertar respuesta.");
             }
 
             return campanias;

@@ -2,5 +2,5 @@
 <resources>
   <string name="app_name">Vox 
   Populi</string>
-  <color name="splash_background">#fb9d9d</color>
+  <color name="splash_background">#f65858</color>
 </resources>

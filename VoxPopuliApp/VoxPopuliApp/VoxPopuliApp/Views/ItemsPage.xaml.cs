@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 using VoxPopuliApp.Models;
+using VoxPopuliApp.Services;
 using VoxPopuliApp.ViewModels;
 
 using Xamarin.Forms;
@@ -14,8 +15,16 @@ namespace VoxPopuliApp.Views
         public ItemsPage()
         {
             InitializeComponent();
-
             BindingContext = viewModel = new ItemsViewModel();
+            MessagingCenter.Subscribe<CampaniaDataStore, string>(this, "ErrInsert", async (sender, arg) =>
+            {
+                await DisplayAlert("Aviso", arg, "OK");
+            });
+            MessagingCenter.Subscribe<ItemDetailViewModel, string>(this, "ErrLoad", async (sender, arg) =>
+            {
+                await DisplayAlert("Aviso", arg, "OK");
+                await Navigation.PopAsync();
+            });
         }
 
         async void OnItemSelected(object sender, SelectedItemChangedEventArgs args)
@@ -24,8 +33,6 @@ namespace VoxPopuliApp.Views
             if (item == null)
                 return;
             await Navigation.PushAsync(new ItemDetailPage(new ItemDetailViewModel(item)));
-
-            // Manually deselect item
             ItemsListView.SelectedItem = null;
         }
 
@@ -45,9 +52,7 @@ namespace VoxPopuliApp.Views
             }
             catch (Exception ex)
             {
-
                 Debug.WriteLine(ex.Message);
-                MessagingCenter.Send(this, ex.Message);
             }
         }
     }

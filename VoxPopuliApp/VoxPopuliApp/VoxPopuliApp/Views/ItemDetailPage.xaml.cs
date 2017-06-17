@@ -30,8 +30,11 @@ namespace VoxPopuliApp.Views
         {
             base.OnAppearing();
 
-            if (viewModel.Respuestas.Count == 0)
-                viewModel.CargaRespuesta.Execute(null);
+            if (viewModel.Respuestas != null)
+            {
+                if (viewModel.Respuestas.Count == 0)
+                    viewModel.CargaRespuesta.Execute(null); 
+            }
         }
 
         async void OnItemSelected(object sender, SelectedItemChangedEventArgs args)
@@ -50,7 +53,6 @@ namespace VoxPopuliApp.Views
             }
             catch (System.Exception ex)
             {
-
                 Debug.WriteLine(ex.Message);
                 MessagingCenter.Send(this, ex.Message);
             }
