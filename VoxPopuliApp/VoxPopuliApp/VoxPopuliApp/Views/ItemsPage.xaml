@@ -16,8 +16,8 @@
                     <RowDefinition Height="auto"/>
                 </Grid.RowDefinitions>
                 <Image Source="questions.png" HeightRequest="80" Margin="12,0,0,0" WidthRequest="80" Grid.RowSpan="2" VerticalOptions="CenterAndExpand"/>
-                <Label Text="Campañas Activas" FontSize="Large" Grid.Column="1" TextColor="White"/>
-                <Label Grid.Row="1" VerticalOptions="FillAndExpand" LineBreakMode="WordWrap" Grid.Column="1" Margin="10" TextColor="White"  Text="Contesta encuestas y recibe beneficios!" FontSize="Medium"/>
+                <Label Text="Campañas Activas" FontSize="Medium" Grid.Column="1" TextColor="White"/>
+                <Label Grid.Row="1" VerticalOptions="FillAndExpand" LineBreakMode="WordWrap" Grid.Column="1" TextColor="White"  Text="Contesta encuestas y recibe beneficios!" FontSize="Small"/>
             </Grid>
             <ListView x:Name="ItemsListView" Margin="12" ItemsSource="{Binding Campanias}" VerticalOptions="FillAndExpand" HasUnevenRows="true" RefreshCommand="{Binding CargaCampaniasCommand}" IsPullToRefreshEnabled="true" IsRefreshing="{Binding IsBusy, Mode=OneWay}" CachingStrategy="RecycleElement" ItemSelected="OnItemSelected">
                 <ListView.ItemTemplate>

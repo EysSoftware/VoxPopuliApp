@@ -27,7 +27,7 @@ namespace VoxPopuliApp.ViewModels
 
         public ItemDetailViewModel(Rootobject item = null)
         {
-            //Title = item.CampaniaDetalle.First().Pregunta.Nombre;
+            Title = item.CampaniaDetalle.First().Pregunta.Nombre;
             Item = item;
             CampaniaID = item.CampaniaId;
             TextoBoton = "Siguiente";
@@ -56,24 +56,17 @@ namespace VoxPopuliApp.ViewModels
                 }
             }
             catch (Exception ex)
-            {                
+            {
+                Debug.WriteLine("Error al insertar " + ex.Message);
             }
         }
         private async Task insertarRespuesta()
         {
-            string RestUrl = @"http://192.168.1.18/voxpopuli/api/RespuestaCampanias";
+            string RestUrl = string.Format(@"http://eysvirtual.centralus.cloudapp.azure.com/voxpopuli/api/RespuestaCampanias/");
             var uri = new Uri(string.Format(RestUrl, string.Empty));
             RespuestaCampania entidad = new RespuestaCampania
             {
-                //CampaniaDetalleId = respuestaSeleccionada.RespuestaCampania[index].CampaniaDetalleId,
-                //CampaniaId = respuestaSeleccionada.RespuestaCampania[index].CampaniaId,
-                //ContadorRespuesta = 1,
-                //RespuestaId = respuestaSeleccionada.RespuestaId,
-                //OpcionRespuesta = 0,
-                //Fecha = DateTime.Now,
-                //Comentarios = "yeah!!!",
-                //PreguntaId = respuestaSeleccionada.ControlPregunta[index].PreguntaId
-                //CampaniaDetalleId = Item.CampaniaDetalle[index].CampaniaDetalleId,
+
                 CampaniaDetalleId = 0,
                 CampaniaId = 1,
                 ContadorRespuesta = 1,
@@ -102,8 +95,7 @@ namespace VoxPopuliApp.ViewModels
             }
             catch (Exception ex)
             {
-
-                throw;
+                throw ex;
             }
         }
         private async Task ExecuteLoadRespuestasCommand()

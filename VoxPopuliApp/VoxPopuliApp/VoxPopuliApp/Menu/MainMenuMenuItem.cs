@@ -11,7 +11,7 @@ namespace VoxPopuliApp.Menu
     {
         public MainMenuMenuItem()
         {
-            TargetType = typeof(MainMenuDetail);
+            //TargetType = typeof(MainMenuDetail);
         }
         public int Id { get; set; }
         public string Title { get; set; }
