@@ -30,9 +30,9 @@ namespace VoxPopuliApp.Menu
             {
                 MenuItems = new ObservableCollection<MainMenuMenuItem>(new[]
                 {
-                    new MainMenuMenuItem { Id = 0, Title = "Campañas Activas", TargetType = typeof(ItemsPage)},
-                    new MainMenuMenuItem { Id = 1, Title = "Mis Recompensas", TargetType = typeof(MisRecompensas)},
-                    new MainMenuMenuItem { Id = 2, Title = "About", TargetType = typeof(AboutPage) },
+                    new MainMenuMenuItem { Id = 0, Title = "Campañas Activas", TargetType = typeof(ItemsPage), Source = "questions.png"},
+                    new MainMenuMenuItem { Id = 1, Title = "Mis Recompensas", TargetType = typeof(MisRecompensas), Source = "badge.png"},
+                    new MainMenuMenuItem { Id = 2, Title = "About", TargetType = typeof(AboutPage), Source = "question.png" },
                 });
             }
 

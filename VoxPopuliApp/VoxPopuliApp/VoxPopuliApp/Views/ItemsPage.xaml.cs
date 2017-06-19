@@ -19,6 +19,8 @@ namespace VoxPopuliApp.Views
             MessagingCenter.Subscribe<CampaniaDataStore, string>(this, "ErrInsert", async (sender, arg) =>
             {
                 await DisplayAlert("Aviso", arg, "OK");
+                await Navigation.PopAsync();
+
             });
             MessagingCenter.Subscribe<ItemDetailViewModel, string>(this, "ErrLoad", async (sender, arg) =>
             {
