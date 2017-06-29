@@ -25,7 +25,6 @@ namespace VoxPopuliApp.Services
         public CampaniaDataStore()
         {
             client = new HttpClient();
-            client.MaxResponseContentBufferSize = 2560000;
         }
 
         public Task<bool> AddItemAsync(Rootobject item)

@@ -62,7 +62,7 @@ namespace VoxPopuliApp.ViewModels
             {
                 if (index <= Item.CampaniaDetalle.Count() - 1)
                 {
-                    await insertarRespuesta();
+                    //await insertarRespuesta();
                     index++;
                     if (index >= Item.CampaniaDetalle.Count() - 1)
                     {
